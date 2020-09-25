@@ -1,34 +1,28 @@
-if(!process.env.NODE_ENV || process.env.NODE_ENV !== 'production') {
+if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 module.exports = {
   development: {
-      client: 'pg',
-      connection: {
-        database: "memest",
-        host: "localhost"
-      },
-      migrations: {
-          directory: __dirname + '/database/migrations',
-        },
-      seeds: {
-          directory: __dirname + '/database/seeds',
-        },
+    client: 'pg',
+    connection: {
+      database: "memest",
+      host: "localhost"
     },
+    migrations: {
+      directory: __dirname + '/database/migrations',
+    },
+    seeds: {
+      directory: __dirname + '/database/seeds',
+    },
+  },
   production: {
-      client: 'pg',
-      connection: {
-        user: 'postgres',
-        host: 'postgres',
-        database: 'memest',
-        password: process.env.DB_PASS,
-        port: 5432
+    client: 'pg',
+    connection: process.env.DB_URL,
+    migrations: {
+      directory: __dirname + '/database/production/migrations',
     },
-      migrations: {
-          directory: __dirname + '/database/production/migrations',
-        },
-      seeds: {
-          directory: __dirname + '/database/seeds',
-        },
+    seeds: {
+      directory: __dirname + '/database/seeds',
     },
+  },
 };

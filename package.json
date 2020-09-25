@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dbreload": "knex migrate:rollback; knex migrate:latest; knex seed:run",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dbreload": "knex migrate:latest --env production; knex seed:run",
+    "dbroll": "knex migrate:rollback;",
+    "test": "echo \"Error: no test speciknex migrate:latestfied\" && exit 1"
   },
   "keywords": [],
   "author": "",
